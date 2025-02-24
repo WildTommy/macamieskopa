@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mārketinga tests</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      .container {
+        max-width: 960px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        font-size: 2em;
+        border-bottom: 2px solid #2c3e50;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      h2 {
+        color: #2c3e50;
+        font-size: 1.6em;
+        margin-bottom: 10px;
+      }
+      .question {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+      }
+      .options {
+        margin-left: 20px;
+      }
+      .options label {
+        display: block;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+      .feedback {
+        margin-top: 10px;
+        font-weight: bold;
+        display: none;
+      }
+      .correct {
+        color: green;
+        display: block;
+      }
+      .incorrect {
+        color: red;
+        display: block;
+      }
+      #result {
+        margin-top: 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+      }
+      button {
+        background: #2c3e50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+        margin: 20px auto;
+        display: block;
+      }
+      button:hover {
+        background: #34495e;
+      }
+      .switch {
+        margin-bottom: 20px;
+        font-size: 1.1em;
+      }
+      @media (max-width: 600px) {
+        .container {
+          margin: 10px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="index.html">Atgriezties pie teorijas</a>
+      <h1>Mārketinga tests</h1>
+      <div class="switch">
+        <label>
+          <input type="checkbox" id="immediateFeedback" /> Tūlītēja
+          atgriezeniskā saite
+        </label>
+      </div>
+      <form id="quizForm">
+        <div class="question">
+          <h2>1. Kas raksturo mārketinga informācijas sistēmu (MIS)?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q1" value="a" /> a) Sistēma, kas apkopo
+              klientu datus no sociālajiem tīkliem</label
+            >
+            <label
+              ><input type="radio" name="q1" value="b" /> b) Strukturēta
+              procedūra informācijas vākšanai un analīzei lēmumu
+              pieņemšanai</label
+            >
+            <label
+              ><input type="radio" name="q1" value="c" /> c) Programmatūra, kas
+              automatizē mārketinga kampaņu plānošanu</label
+            >
+            <label
+              ><input type="radio" name="q1" value="d" /> d) Datu bāze, kas
+              uzglabā uzņēmuma pārdošanas statistiku</label
+            >
+          </div>
+          <div class="feedback" id="feedback1"></div>
+        </div>
+
+        <div class="question">
+          <h2>
+            2. Kurā mārketinga pētījumu posmā anketas kļuva par galveno datu
+            vākšanas rīku?
+          </h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q2" value="a" /> a) Sākotnējās
+              attīstības fāzē</label
+            >
+            <label
+              ><input type="radio" name="q2" value="b" /> b) Kvantitatīvās
+              analīzes periodā</label
+            >
+            <label
+              ><input type="radio" name="q2" value="c" /> c) Strukturēto aptauju
+              ērā</label
+            >
+            <label
+              ><input type="radio" name="q2" value="d" /> d) Organizatoriskās
+              efektivitātes posmā</label
+            >
+          </div>
+          <div class="feedback" id="feedback2"></div>
+        </div>
+
+        <div class="question">
+          <h2>3. Ko nozīmē primārā informācija mārketinga pētījumos?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q3" value="a" /> a) Statistika, kas
+              savākta no publiskiem avotiem</label
+            >
+            <label
+              ><input type="radio" name="q3" value="b" /> b) Dati, kas iegūti
+              tieši no respondentiem aptaujās vai intervijās</label
+            >
+            <label
+              ><input type="radio" name="q3" value="c" /> c) Informācija, kas
+              ņemta no uzņēmuma iekšējām atskaitēm</label
+            >
+            <label
+              ><input type="radio" name="q3" value="d" /> d) Analītiski dati no
+              nozares pārskatiem</label
+            >
+          </div>
+          <div class="feedback" id="feedback3"></div>
+        </div>
+
+        <div class="question">
+          <h2>4. Kāds ir mārketinga pētījumu galvenais uzdevums?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q4" value="a" /> a) Samazināt riskus un
+              atbalstīt stratēģiskus lēmumus</label
+            >
+            <label
+              ><input type="radio" name="q4" value="b" /> b) Nodrošināt precīzu
+              konkurentu darbību analīzi</label
+            >
+            <label
+              ><input type="radio" name="q4" value="c" /> c) Palielināt
+              mārketinga kampaņu efektivitāti</label
+            >
+            <label
+              ><input type="radio" name="q4" value="d" /> d) Prognozēt tirgus
+              apjomus un izaugsmes iespējas</label
+            >
+          </div>
+          <div class="feedback" id="feedback4"></div>
+        </div>
+
+        <div class="question">
+          <h2>5. Kā Pride & Ferrel (2012) definē mārketingu?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q5" value="a" /> a) Preču ražošana un
+              izplatīšana klientiem</label
+            >
+            <label
+              ><input type="radio" name="q5" value="b" /> b) Produktu,
+              pakalpojumu un ideju plānošana un veicināšana attiecību
+              veidošanai</label
+            >
+            <label
+              ><input type="radio" name="q5" value="c" /> c) Stratēģija
+              pārdošanas apjomu palielināšanai</label
+            >
+            <label
+              ><input type="radio" name="q5" value="d" /> d) Reklāmas un
+              komunikācijas aktivitāšu kopums</label
+            >
+          </div>
+          <div class="feedback" id="feedback5"></div>
+        </div>
+
+        <div class="question">
+          <h2>6. Kura koncepcija uzsver ražošanas procesa efektivitāti?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q6" value="a" /> a) Produktu attīstības
+              pieeja</label
+            >
+            <label
+              ><input type="radio" name="q6" value="b" /> b) Ražošanas
+              optimizācijas stratēģija</label
+            >
+            <label
+              ><input type="radio" name="q6" value="c" /> c) Pārdošanas
+              veicināšanas modelis</label
+            >
+            <label
+              ><input type="radio" name="q6" value="d" /> d) Sabiedrības
+              labklājības fokuss</label
+            >
+          </div>
+          <div class="feedback" id="feedback6"></div>
+        </div>
+
+        <div class="question">
+          <h2>7. Ko ietver sociālā mārketinga koncepcija?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q7" value="a" /> a) Fokusēšanos uz
+              sociālo mediju kampaņām</label
+            >
+            <label
+              ><input type="radio" name="q7" value="b" /> b) Sabiedrības
+              interešu ignorēšanu peļņas labā</label
+            >
+            <label
+              ><input type="radio" name="q7" value="c" /> c) Pircēju vajadzību
+              apmierināšanu ar sabiedrības labumu</label
+            >
+            <label
+              ><input type="radio" name="q7" value="d" /> d) Uzņēmuma tēla
+              uzlabošanu caur labdarību</label
+            >
+          </div>
+          <div class="feedback" id="feedback7"></div>
+        </div>
+
+        <div class="question">
+          <h2>8. Kas ir mārketinga komplekss?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q8" value="a" /> a) Kontrolējami rīki
+              mērķa tirgus ietekmēšanai</label
+            >
+            <label
+              ><input type="radio" name="q8" value="b" /> b) Ārējo faktoru
+              analīzes metode</label
+            >
+            <label
+              ><input type="radio" name="q8" value="c" /> c) Patērētāju
+              uzvedības izpētes modelis</label
+            >
+            <label
+              ><input type="radio" name="q8" value="d" /> d) Uzņēmuma iekšējo
+              resursu plānojums</label
+            >
+          </div>
+          <div class="feedback" id="feedback8"></div>
+        </div>
+
+        <div class="question">
+          <h2>9. Kuri soļi veido mārketinga vadīšanas procesu?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q9" value="a" /> a) Situācijas analīze,
+              mērķu definēšana, plānošana, īstenošana, kontrole</label
+            >
+            <label
+              ><input type="radio" name="q9" value="b" /> b) Mērķu izvirzīšana,
+              plānošana, rezultātu izvērtēšana</label
+            >
+            <label
+              ><input type="radio" name="q9" value="c" /> c) Stratēģijas
+              izstrāde, īstenošana, efektivitātes analīze</label
+            >
+            <label
+              ><input type="radio" name="q9" value="d" /> d) Konkurentu izpēte,
+              plānošana, kampaņu vadība</label
+            >
+          </div>
+          <div class="feedback" id="feedback9"></div>
+        </div>
+
+        <div class="question">
+          <h2>10. Ko dara mārketinga vadītāji vertikālā līmenī?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q10" value="a" /> a) Analizē tirgus
+              datus un prognozē tendences</label
+            >
+            <label
+              ><input type="radio" name="q10" value="b" /> b) Pieņem lēmumus par
+              tirgus iekarošanu</label
+            >
+            <label
+              ><input type="radio" name="q10" value="c" /> c) Izstrādā
+              komunikācijas plānus visai organizācijai</label
+            >
+            <label
+              ><input type="radio" name="q10" value="d" /> d) Veic pētījumus un
+              interpretē rezultātus</label
+            >
+          </div>
+          <div class="feedback" id="feedback10"></div>
+        </div>
+
+        <div class="question">
+          <h2>11. Ko ietver SWOT analīze?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q11" value="a" /> a) Stiprās, vājās
+              puses, iespējas un draudus</label
+            >
+            <label
+              ><input type="radio" name="q11" value="b" /> b) Iekšējos resursus
+              un kompetences</label
+            >
+            <label
+              ><input type="radio" name="q11" value="c" /> c) Ārējo faktoru
+              ietekmes novērtējumu</label
+            >
+            <label
+              ><input type="radio" name="q11" value="d" /> d) Mārketinga
+              instrumentu optimizāciju</label
+            >
+          </div>
+          <div class="feedback" id="feedback11"></div>
+        </div>
+
+        <div class="question">
+          <h2>12. Kuri elementi veido mārketinga makrovidi?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q12" value="a" /> a) Demogrāfija,
+              ekonomika, tehnoloģijas, politika, kultūra</label
+            >
+            <label
+              ><input type="radio" name="q12" value="b" /> b) Piegādātāji,
+              klienti, konkurenti, starpnieki</label
+            >
+            <label
+              ><input type="radio" name="q12" value="c" /> c) Uzņēmuma iekšējā
+              struktūra un resursi</label
+            >
+            <label
+              ><input type="radio" name="q12" value="d" /> d) Patērētāju lēmumu
+              procesi un uzvedība</label
+            >
+          </div>
+          <div class="feedback" id="feedback12"></div>
+        </div>
+
+        <div class="question">
+          <h2>13. Kas raksturo mārketinga mikrovidi?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q13" value="a" /> a) Tiešie faktori,
+              kas saistīti ar uzņēmuma darbību</label
+            >
+            <label
+              ><input type="radio" name="q13" value="b" /> b) Plašāki faktori,
+              kas ietekmē visu tirgu</label
+            >
+            <label
+              ><input type="radio" name="q13" value="c" /> c) Konkurentu
+              stratēģijas un taktikas</label
+            >
+            <label
+              ><input type="radio" name="q13" value="d" /> d) Patērētāju
+              demogrāfiskās iezīmes</label
+            >
+          </div>
+          <div class="feedback" id="feedback13"></div>
+        </div>
+
+        <div class="question">
+          <h2>14. Kuri faktori mārketinga vidē ir nekontrolējami?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q14" value="a" /> a) Mediji,
+              konkurence, tehnoloģijas, ekonomika, regulējums</label
+            >
+            <label
+              ><input type="radio" name="q14" value="b" /> b) Personāls, vadība,
+              uzņēmuma struktūra</label
+            >
+            <label
+              ><input type="radio" name="q14" value="c" /> c) Mārketinga un
+              finanšu nodaļas darbība</label
+            >
+            <label
+              ><input type="radio" name="q14" value="d" /> d) Stratēģijas un
+              kampaņu plānošana</label
+            >
+          </div>
+          <div class="feedback" id="feedback14"></div>
+        </div>
+
+        <div class="question">
+          <h2>15. Kas ir patērētāju tirgus?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q15" value="a" /> a) Indivīdi un
+              mājsaimniecības, kas pērk preces sev</label
+            >
+            <label
+              ><input type="radio" name="q15" value="b" /> b) Uzņēmumi, kas
+              iegādājas preces ražošanai</label
+            >
+            <label
+              ><input type="radio" name="q15" value="c" /> c) Valdība, kas pērk
+              preces sabiedrībai</label
+            >
+            <label
+              ><input type="radio" name="q15" value="d" /> d) Starpnieki, kas
+              izplata preces tālāk</label
+            >
+          </div>
+          <div class="feedback" id="feedback15"></div>
+        </div>
+
+        <div class="question">
+          <h2>16. Kuri ir sociālie faktori patērētāju uzvedībā?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q16" value="a" /> a) Grupu ietekme,
+              ģimene, sociālās lomas</label
+            >
+            <label
+              ><input type="radio" name="q16" value="b" /> b) Dzīves posms,
+              ienākumi, profesija</label
+            >
+            <label
+              ><input type="radio" name="q16" value="c" /> c) Motivācija,
+              uztvere, attieksme</label
+            >
+            <label
+              ><input type="radio" name="q16" value="d" /> d) Kultūra, klases,
+              tradīcijas</label
+            >
+          </div>
+          <div class="feedback" id="feedback16"></div>
+        </div>
+
+        <div class="question">
+          <h2>17. Kurš ir pirkšanas lēmuma procesa posms?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q17" value="a" /> a) Vajadzību
+              identificēšana</label
+            >
+            <label
+              ><input type="radio" name="q17" value="b" /> b) Informācijas
+              apkopošana</label
+            >
+            <label
+              ><input type="radio" name="q17" value="c" /> c) Iespēju
+              izvērtēšana</label
+            >
+            <label
+              ><input type="radio" name="q17" value="d" /> d) Visi minētie
+              posmi</label
+            >
+          </div>
+          <div class="feedback" id="feedback17"></div>
+        </div>
+
+        <div class="question">
+          <h2>18. Kas ir "melnā kaste" patērētāju uzvedībā?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q18" value="a" /> a) Pircēja zemapziņa,
+              kas noslēpj iekšējos faktorus</label
+            >
+            <label
+              ><input type="radio" name="q18" value="b" /> b) Mārketinga
+              stimuli, kas ietekmē lēmumus</label
+            >
+            <label
+              ><input type="radio" name="q18" value="c" /> c) Ārējie apstākļi,
+              kas rosina vajadzības</label
+            >
+            <label
+              ><input type="radio" name="q18" value="d" /> d) Pirkuma iznākums
+              un tā sekas</label
+            >
+          </div>
+          <div class="feedback" id="feedback18"></div>
+        </div>
+
+        <div class="question">
+          <h2>19. Kā primārās referentās grupas atšķiras no sekundārajām?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q19" value="a" /> a) Primārās ir tiešas
+              (ģimene), sekundārās netiešas (organizācijas)</label
+            >
+            <label
+              ><input type="radio" name="q19" value="b" /> b) Primārās ir
+              virtuālas, sekundārās fiziskas</label
+            >
+            <label
+              ><input type="radio" name="q19" value="c" /> c) Primārās ir
+              klases, sekundārās subkultūras</label
+            >
+            <label
+              ><input type="radio" name="q19" value="d" /> d) Primārās ir mazāk
+              ietekmīgas nekā sekundārās</label
+            >
+          </div>
+          <div class="feedback" id="feedback19"></div>
+        </div>
+
+        <div class="question">
+          <h2>20. Kāds psiholoģiskais faktors ietekmē patērētāju uzvedību?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q20" value="a" /> a) Motivācijas
+              līmenis un vajadzības</label
+            >
+            <label
+              ><input type="radio" name="q20" value="b" /> b) Dzīvesveids un
+              preferences</label
+            >
+            <label
+              ><input type="radio" name="q20" value="c" /> c) Profesija un
+              ienākumu līmenis</label
+            >
+            <label
+              ><input type="radio" name="q20" value="d" /> d) Sociālās lomas un
+              statuss</label
+            >
+          </div>
+          <div class="feedback" id="feedback20"></div>
+        </div>
+
+        <div class="question">
+          <h2>21. Kāda ir galvenā atšķirība starp mikrovidi un makrovidi?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q21" value="a" /> a) Mikrovide ir
+              kontrolējama, makrovide nav</label
+            >
+            <label
+              ><input type="radio" name="q21" value="b" /> b) Mikrovide ietver
+              iekšējos faktorus, makrovide ārējos</label
+            >
+            <label
+              ><input type="radio" name="q21" value="c" /> c) Mikrovide attiecas
+              uz klientiem, makrovide uz konkurentiem</label
+            >
+            <label
+              ><input type="radio" name="q21" value="d" /> d) Mikrovide ir
+              īstermiņa, makrovide ilgtermiņa</label
+            >
+          </div>
+          <div class="feedback" id="feedback21"></div>
+        </div>
+
+        <div class="question">
+          <h2>22. Kāds ir mārketinga pētījumu mērķis?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q22" value="a" /> a) Samazināt
+              nenoteiktību lēmumu pieņemšanā</label
+            >
+            <label
+              ><input type="radio" name="q22" value="b" /> b) Palielināt
+              uzņēmuma pārdošanas apjomus</label
+            >
+            <label
+              ><input type="radio" name="q22" value="c" /> c) Uzlabot zīmola
+              atpazīstamību tirgū</label
+            >
+            <label
+              ><input type="radio" name="q22" value="d" /> d) Izstrādāt jaunus
+              produktus klientiem</label
+            >
+          </div>
+          <div class="feedback" id="feedback22"></div>
+        </div>
+
+        <div class="question">
+          <h2>23. Kāds ir pirmais solis pirkšanas lēmuma procesā?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q23" value="a" /> a) Problēmas vai
+              vajadzības apzināšanās</label
+            >
+            <label
+              ><input type="radio" name="q23" value="b" /> b) Informācijas
+              meklēšana par risinājumiem</label
+            >
+            <label
+              ><input type="radio" name="q23" value="c" /> c) Alternatīvu
+              salīdzināšana un izvērtēšana</label
+            >
+            <label
+              ><input type="radio" name="q23" value="d" /> d) Lēmuma pieņemšana
+              par pirkumu</label
+            >
+          </div>
+          <div class="feedback" id="feedback23"></div>
+        </div>
+
+        <div class="question">
+          <h2>
+            24. Kāds ir galvenais mērķis, izmantojot segmentēšanu mārketingā?
+          </h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q24" value="a" /> a) Palielināt
+              pārdošanas apjomus visos tirgos</label
+            >
+            <label
+              ><input type="radio" name="q24" value="b" /> b) Identificēt un
+              apmierināt specifiskas klientu grupas vajadzības</label
+            >
+            <label
+              ><input type="radio" name="q24" value="c" /> c) Samazināt
+              mārketinga budžetu</label
+            >
+            <label
+              ><input type="radio" name="q24" value="d" /> d) Koncentrēties uz
+              vienu produkta veidu</label
+            >
+          </div>
+          <div class="feedback" id="feedback24"></div>
+        </div>
+
+        <div class="question">
+          <h2>25. Kas raksturo sociālo mārketingu?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q25" value="a" /> a) Sabiedrības
+              labklājības veicināšana ar mārketingu</label
+            >
+            <label
+              ><input type="radio" name="q25" value="b" /> b) Sociālo mediju
+              izmantošana reklāmas kampaņās</label
+            >
+            <label
+              ><input type="radio" name="q25" value="c" /> c) Uzņēmuma sociālās
+              atbildības popularizēšana</label
+            >
+            <label
+              ><input type="radio" name="q25" value="d" /> d) Patērētāju
+              savstarpējās mijiedarbības veicināšana</label
+            >
+          </div>
+          <div class="feedback" id="feedback25"></div>
+        </div>
+
+        <div class="question">
+          <h2>
+            26. Kāds ir sekundārās informācijas avots mārketinga pētījumos?
+          </h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q26" value="a" /> a) Intervijas ar
+              klientiem par viņu vēlmēm</label
+            >
+            <label
+              ><input type="radio" name="q26" value="b" /> b) Esošie dati no
+              nozares pārskatiem un statistikas</label
+            >
+            <label
+              ><input type="radio" name="q26" value="c" /> c) Aptaujas, kas
+              veiktas konkrētam pētījumam</label
+            >
+            <label
+              ><input type="radio" name="q26" value="d" /> d) Fokusa grupu
+              diskusiju rezultāti</label
+            >
+          </div>
+          <div class="feedback" id="feedback26"></div>
+        </div>
+
+        <div class="question">
+          <h2>
+            27. Kura mārketinga koncepcija koncentrējas uz produktu kvalitāti?
+          </h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q27" value="a" /> a) Ražošanas
+              efektivitātes pieeja</label
+            >
+            <label
+              ><input type="radio" name="q27" value="b" /> b) Produktu
+              attīstības stratēģija</label
+            >
+            <label
+              ><input type="radio" name="q27" value="c" /> c) Pārdošanas
+              veicināšanas modelis</label
+            >
+            <label
+              ><input type="radio" name="q27" value="d" /> d) Klientu vajadzību
+              orientēta pieeja</label
+            >
+          </div>
+          <div class="feedback" id="feedback27"></div>
+        </div>
+
+        <div class="question">
+          <h2>28. Kāds ir mārketinga plānošanas mērķis?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q28" value="a" /> a) Nodrošināt resursu
+              efektīvu izmantošanu un mērķu sasniegšanu</label
+            >
+            <label
+              ><input type="radio" name="q28" value="b" /> b) Analizēt
+              konkurentu stratēģijas un taktikas</label
+            >
+            <label
+              ><input type="radio" name="q28" value="c" /> c) Izveidot
+              detalizētu pārdošanas prognozi</label
+            >
+            <label
+              ><input type="radio" name="q28" value="d" /> d) Palielināt zīmola
+              atpazīstamību tirgū</label
+            >
+          </div>
+          <div class="feedback" id="feedback28"></div>
+        </div>
+
+        <div class="question">
+          <h2>
+            29. Kurš faktors pieder pie mārketinga makrovides tehnoloģiskajiem
+            aspektiem?
+          </h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q29" value="a" /> a) Valdības noteiktie
+              nodokļu likumi</label
+            >
+            <label
+              ><input type="radio" name="q29" value="b" /> b) Jaunu ražošanas
+              tehnoloģiju ieviešana</label
+            >
+            <label
+              ><input type="radio" name="q29" value="c" /> c) Patērētāju
+              ienākumu līmeņa izmaiņas</label
+            >
+            <label
+              ><input type="radio" name="q29" value="d" /> d) Kultūras normas un
+              tradīcijas</label
+            >
+          </div>
+          <div class="feedback" id="feedback29"></div>
+        </div>
+
+        <div class="question">
+          <h2>30. Kāds kultūras faktors ietekmē patērētāju uzvedību?</h2>
+          <div class="options">
+            <label
+              ><input type="radio" name="q30" value="a" /> a) Ģimenes lomas un
+              pienākumi</label
+            >
+            <label
+              ><input type="radio" name="q30" value="b" /> b) Sociālās grupas un
+              to ietekme</label
+            >
+            <label
+              ><input type="radio" name="q30" value="c" /> c) Pamatvērtības un
+              uzskati sabiedrībā</label
+            >
+            <label
+              ><input type="radio" name="q30" value="d" /> d) Indivīda
+              motivācija un uztvere</label
+            >
+          </div>
+          <div class="feedback" id="feedback30"></div>
+        </div>
+      </form>
+      <button onclick="checkAnswers()">Pārbaudīt atbildes</button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      const correctAnswers = {
+        q1: "b",
+        q2: "c",
+        q3: "b",
+        q4: "a",
+        q5: "b",
+        q6: "b",
+        q7: "c",
+        q8: "a",
+        q9: "a",
+        q10: "b",
+        q11: "a",
+        q12: "a",
+        q13: "a",
+        q14: "a",
+        q15: "a",
+        q16: "a",
+        q17: "d",
+        q18: "a",
+        q19: "a",
+        q20: "a",
+        q21: "a",
+        q22: "a",
+        q23: "a",
+        q24: "b",
+        q25: "a",
+        q26: "b",
+        q27: "b",
+        q28: "a",
+        q29: "b",
+        q30: "c",
+      };
+
+      function checkAnswers() {
+        const form = document.getElementById("quizForm");
+        const questions = form.querySelectorAll(".question");
+        let score = 0;
+
+        questions.forEach((question, index) => {
+          const questionNumber = index + 1;
+          const selectedOption = question.querySelector(
+            `input[name="q${questionNumber}"]:checked`
+          );
+          const feedback = question.querySelector(`#feedback${questionNumber}`);
+          const immediateFeedback =
+            document.getElementById("immediateFeedback").checked;
+
+          if (selectedOption) {
+            const userAnswer = selectedOption.value;
+            const correctAnswer = correctAnswers[`q${questionNumber}`];
+
+            if (userAnswer === correctAnswer) {
+              score++;
+              if (!immediateFeedback) {
+                feedback.textContent = "Pareizi!";
+                feedback.className = "feedback correct";
+                feedback.style.display = "block";
+              }
+            } else {
+              if (!immediateFeedback) {
+                feedback.textContent = `Nepareizi. Pareizā atbilde ir ${correctAnswer.toUpperCase()}.`;
+                feedback.className = "feedback incorrect";
+                feedback.style.display = "block";
+              }
+            }
+          } else if (!immediateFeedback) {
+            feedback.textContent = "Atbilde nav izvēlēta.";
+            feedback.className = "feedback incorrect";
+            feedback.style.display = "block";
+          }
+        });
+
+        const result = document.getElementById("result");
+        result.textContent = `Jūs atbildējāt pareizi uz ${score} no ${questions.length} jautājumiem.`;
+      }
+
+      document.querySelectorAll('input[type="radio"]').forEach((input) => {
+        input.addEventListener("change", function () {
+          const immediateFeedback =
+            document.getElementById("immediateFeedback").checked;
+          if (!immediateFeedback) return;
+
+          const question = this.closest(".question");
+          const questionNumber = question
+            .querySelector("h2")
+            .textContent.split(".")[0];
+          const feedback = question.querySelector(`#feedback${questionNumber}`);
+          const userAnswer = this.value;
+          const correctAnswer = correctAnswers[`q${questionNumber}`];
+
+          if (userAnswer === correctAnswer) {
+            feedback.textContent = "Pareizi!";
+            feedback.className = "feedback correct";
+            feedback.style.display = "block";
+          } else {
+            feedback.textContent = `Nepareizi. Pareizā atbilde ir ${correctAnswer.toUpperCase()}.`;
+            feedback.className = "feedback incorrect";
+            feedback.style.display = "block";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
