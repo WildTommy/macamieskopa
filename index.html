@@ -1,542 +1,813 @@
 <!DOCTYPE html>
 <html lang="lv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mārketinga jēdziens un koncepcijas. Mārketinga vadīšana.</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasaules Ekonomikas Apskats</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-      /* Vispārējie stili */
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        background: #f9f9f9;
-        margin: 0;
-        padding: 0;
-        color: #333;
-      }
-      .container {
-        max-width: 900px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px 30px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-      h1,
-      h2,
-      h3,
-      h4 {
-        color: #2c3e50;
-        margin-top: 1.2em;
-        line-height: 1.2;
-      }
-      h1 {
-        font-size: 2em;
-        border-bottom: 2px solid #2c3e50;
-        padding-bottom: 10px;
-      }
-      h2 {
-        font-size: 1.5em;
-        margin-bottom: 0.5em;
-      }
-      h3 {
-        font-size: 1.3em;
-        margin-bottom: 0.5em;
-      }
-      p {
-        margin-bottom: 1em;
-      }
-      ul,
-      ol {
-        margin: 10px 0 10px 20px;
-      }
-      li {
-        margin: 5px 0;
-      }
-      blockquote {
-        margin: 15px 20px;
-        padding: 10px 20px;
-        background: #ecf0f1;
-        border-left: 5px solid #2c3e50;
-        font-style: italic;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 10px 0;
-      }
-      table,
-      th,
-      td {
-        border: 1px solid #ddd;
-      }
-      th,
-      td {
-        padding: 8px;
-        text-align: center;
-      }
-      th {
-        background: #ecf0f1;
-      }
-      /* Navigācijas stils */
-      nav {
-        background: #2c3e50;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-      }
-      nav a {
-        color: #fff;
-        margin: 0 10px;
-        text-decoration: none;
-        font-size: 14px;
-      }
-      nav a:hover {
-        text-decoration: underline;
-      }
-      /* Sadalījumi – “Slide” stils */
-      .slide {
-        margin-bottom: 30px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #ddd;
-      }
-      /* Mobilā saskarne */
-      @media (max-width: 600px) {
-        .container {
-          margin: 10px;
-          padding: 15px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f7;
+            color: #3a3a3a;
+            line-height: 1.7;
         }
-        nav a {
-          font-size: 12px;
-          margin: 0 5px;
+
+        header {
+            background: linear-gradient(135deg, #56ccf2, #2f80ed);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-      }
+
+        header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        #search-input {
+            width: 80%;
+            max-width: 600px;
+            padding: 14px 20px;
+            font-size: 1.05em;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+        #search-input:focus {
+            outline: none;
+            box-shadow: 0 2px 8px rgba(47, 128, 237, 0.3);
+        }
+
+        main {
+            padding: 25px;
+            max-width: 960px;
+            margin: 30px auto;
+        }
+
+        .chapter {
+            background-color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+        }
+
+        .chapter h2 {
+            color: #2f80ed;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 600;
+            border-bottom: 3px solid #56ccf2;
+            padding-bottom: 12px;
+        }
+        
+        .chapter h3 {
+            color: #1c5a99;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.45em;
+            font-weight: 500;
+        }
+        
+        .chapter h4 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .chapter p, .chapter ul, .chapter ol {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden; 
+        }
+
+        th, td {
+            border-bottom: 1px solid #e8e8e8;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f7f9fc;
+            font-weight: 600;
+            color: #2f80ed;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: #fdfdfe;
+        }
+
+        .table-wrapper {
+            overflow-x: auto; 
+        }
+        
+        .chart-container {
+            position: relative;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            width: 100%; 
+            max-width: 700px; 
+            height: 400px; /* Constrained height */
+        }
+        .chart-container canvas {
+            /* Chart.js will be constrained by parent */
+        }
+        .chart-description {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .image-placeholder { 
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #444;
+            text-align: center; /* Center the image description */
+        }
+        .image-placeholder strong {
+            color: #2f80ed;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .image-placeholder img { /* For actual images if added */
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+
+        code, pre {
+            background-color: #e8f4fd;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+            font-size: 0.95em;
+            color: #1d4c7a;
+        }
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            border: 1px solid #d0e0f0;
+        }
+
+        .chapter-hidden {
+            display: none;
+        }
+
+        a {
+            color: #2f80ed;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #1c5a99;
+            text-decoration: underline;
+        }
     </style>
-  </head>
-  <body>
-    <nav>
-      <a href="#ievads">Ievads</a>
-      <a href="#loma">Mārketinga loma</a>
-      <a href="#definicijas">Definīcijas</a>
-      <a href="#klients">Klients</a>
-      <a href="#pamati">Pamati &amp; mērķi</a>
-      <a href="#pamatelementi">Pamatelementi</a>
-      <a href="#produktu-iegusana">Produktu iegūšana</a>
-      <a href="#tirgus">Tirgus</a>
-      <a href="#koncepcijas">Koncepcijas</a>
-      <a href="#evolucija">Evolūcija</a>
-      <a href="#vadisana">Vadīšana</a>
-      <a href="#mix">Marketing Mix</a>
-    </nav>
+</head>
+<body>
 
-    <div class="container">
-      <!-- Ievads -->
-      <section id="ievads">
-        <h1>Mārketinga jēdziens un koncepcijas.<br />Mārketinga vadīšana</h1>
-      </section>
+    <header>
+        <h1>Pasaules Ekonomikas Apskats</h1>
+        <input type="text" id="search-input" placeholder="Meklēt saturā...">
+    </header>
 
-      <!-- Mārketinga loma -->
-      <section id="loma" class="slide">
-        <h2>Mārketinga loma mūsdienu lēmumu pieņemšanā ekosistēmā</h2>
-        <p>
-          <em
-            >Stīvens Tarletons – digitālās darbinieku pieredzes pārvaldības
-            speciālists</em
-          >
-        </p>
-        <ul>
-          <li>Biznesa vadības veiksme ir mārketinga vadības rezultāts.</li>
-          <li>
-            Vislabākie biznesa lēmumi tiek pieņemti, apspriežoties visai
-            vadītāju komandai un pēc tam vienojoties par tiem.
-          </li>
-          <li>
-            Mārketinga vadītājiem ir divas galvenās lomas:
+    <main id="content-container">
+
+        <!-- Chapters from previous response would be here -->
+        <section class="chapter">
+            <h2>Pasaules Saimniecības Pamati un Aspekti</h2>
+            <p>Šajā nodaļā tiek aplūkoti pasaules saimniecības galvenie aspekti, tās definīcija un pamatelementi, kā arī evolūcija cauri vēsturiskajiem posmiem.</p>
+            <h3>Pasaules saimniecības izpratne</h3>
+            <p>Pasaules saimniecību var aplūkot no vairākiem skatupunktiem:</p>
             <ul>
-              <li>
-                <strong>Vertikālā loma:</strong> speciālisti lēmumu pieņemšanā,
-                lai nonāktu tirgū.
-              </li>
-              <li>
-                <strong>Horizontālā loma:</strong> komunikācijas plāna izstrādē
-                visiem uzņēmuma lēmumiem.
-              </li>
+                <li><strong>Kā globālu vienību:</strong> Pasaules saimniecība ir vienots, integrēts organisms.</li>
+                <li><strong>Kā divu saimniecību pretnostatījumu:</strong> Bieži vien tiek analizētas atšķirības un mijiedarbība starp attīstītajām un attīstības valstīm, vai dažādiem ekonomiskajiem blokiem.</li>
+                <li><strong>Kā tautsaimniecību kopumu:</strong> Pasaules saimniecība veidojas no visu pasaules valstu nacionālo ekonomiku summas un to savstarpējām attiecībām.</li>
             </ul>
-          </li>
-        </ul>
-        <blockquote>
-          <p>
-            <strong>Filips Kotlers:</strong> “Mārketings ir spēja sasniegt
-            mērķi.”
-          </p>
-        </blockquote>
-        <p>
-          <strong>Pīters Drukers:</strong> “Biznesam ir tikai divas funkcijas –
-          mārketings un inovācijas.”
-        </p>
-        <p>
-          Mārketings un inovācijas ir savstarpēji saistītas – inovācijas var būt
-          veiksmīgas tikai ar mārketingu, un mārketingam nepieciešamas
-          inovācijas, lai gūtu panākumus.
-        </p>
-      </section>
+            <h3>Pasaules saimniecības pamatelementi</h3>
+            <p>Pasaules saimniecības funkcionēšanu nodrošina vairāki būtiski elementi:</p>
+            <ul>
+                <li><strong>Pasaules preču un pakalpojumu tirgus.</strong></li>
+                <li><strong>Ražošanas faktoru kustība pasaules mērogā,</strong> kas ietver pasaules kapitāla un investīciju tirgu, un pasaules darbaspēka tirgu.</li>
+                <li><strong>Pasaules valūtas sistēma.</strong></li>
+                <li><strong>Starptautiskās ekonomiskās organizācijas.</strong></li>
+            </ul>
+             <p>Mūsdienu pasaules saimniecība ir dinamiska un nepārtrauktā attīstībā esoša sistēma, kas radusies starptautiskās maiņas tīklu konkurences rezultātā, kur arvien lielāks skaits ekonomisko aģentu sacenšas par pieeju ierobežotiem resursiem.</p>
+            <h3>Pasaules saimniecības attīstības vēsturiskie posmi</h3>
+            <p>Pasaules saimniecības attīstību var iedalīt vairākos nozīmīgos posmos:</p>
+            <ol>
+                <li><strong>Līdz Romas impērijai un to ieskaitot:</strong> Agrīnie tirdzniecības sakari, preču-naudas attiecību attīstība, dabiskā specializācija. Galvenais mērķis bija vajadzību apmierināšana un teritoriju paplašināšana, balstoties uz amatniecību. Šis posms ilga līdz Romas impērijas sabrukumam.</li>
+                <li><strong>Līdz 18. gadsimtam:</strong> Feodālisma un merkantilisma laikmets, koloniālo impēriju veidošanās. Notika starptautiskā darba dalīšana, piespiedu specializācija, pasaules sadale. Ekonomikas pamats bija rūpnieciskā ražošana kapitālistiskajās fabrikās, kas noveda pie pasaules tirgus un biržu rašanās.</li>
+                <li><strong>Mūsdienu posms (ar paātrinātu attīstību kopš 20.gs. 70.g. vidus):</strong> Globalizācijas ēra, strauja tehnoloģiju attīstība, kapitāla un ražošanas internacionalizācija, ekonomiskā integrācija un transnacionalizācija. Galvenie virzītājspēki ir peļņas normas un konkurētspēja. Veidojusies vienota pasaules saimniecība ar starptautiskām organizācijām.</li>
+            </ol>
+        </section>
 
-      <!-- Definīcijas -->
-      <section id="definicijas" class="slide">
-        <h2>Kas ir mārketings?</h2>
-        <ul>
-          <li>
-            Mārketings ir produktu, pakalpojumu un ideju radīšanas, cenu
-            noteikšanas, izplatīšanas un pārdošanas veicināšanas process, kas
-            veicina pozitīvu attiecību veidošanos starp visām iesaistītajām
-            pusēm (Pride &amp; Ferrel, 2012).
-          </li>
-          <li>
-            Tas ir aktivitāšu un paradumu kopums, kas sniedz labumu gan
-            pircējiem, gan uzņēmumiem, gan sabiedrībai kopumā (Lamb, Hair &amp;
-            McDaniel, 2013).
-          </li>
-          <li>
-            Mārketings palīdz uzņēmumiem radīt vērtību klientiem un veidot
-            ilgstošas attiecības, nodrošinot savstarpēju labumu (Kotler &amp;
-            Armstrong, 2012).
-          </li>
-        </ul>
-      </section>
+        <section class="chapter">
+            <h2>Darba Dalīšana</h2>
+            <p>Darba dalīšana ir būtisks ekonomiskās efektivitātes un attīstības priekšnoteikums.</p>
+            <h3>Darba dalīšanas veidi</h3>
+            <ul>
+                <li><strong>Dabiskā darba dalīšana:</strong> Pēc vecuma un dzimuma.</li>
+                <li><strong>Sabiedriskā darba dalīšana:</strong> Plašāka specializācija, piemēram, zemkopības atdalīšanās no lopkopības, amatniecības no zemkopības, tirdzniecības no amatniecības, un finanšu operāciju no tirdzniecības.</li>
+                <li><strong>Tehniskā darba dalīšana:</strong> Specializācija ražošanas procesa ietvaros.</li>
+                <li><strong>Starptautiskā darba dalīšana:</strong> Valstu specializācija, kas var būt dabiska (balstīta uz resursiem), nejauša (vēsturiski izveidojusies) vai piespiedu (saistīta ar politisko ietekmi).</li>
+            </ul>
+        </section>
 
-      <!-- Klients un attiecības -->
-      <section id="klients" class="slide">
-        <h2>Klients un attiecības ar klientu</h2>
-        <p><strong>Klients:</strong></p>
-        <ul>
-          <li>Nosaka pieprasījumu.</li>
-          <li>Galvenās īpašības ir vajadzības, vēlmes un prasības.</li>
-          <li>
-            Produkta mērķa tirgus veidojas, balstoties uz izpratni par to, ko
-            klients vēlas un sagaida (segmentācija un pētījumi).
-          </li>
-          <li>
-            Klientu apmierinātībai ir svarīgi, lai piedāvātais produkts atbilstu
-            viņu prasībām – cena, kvalitāte, serviss utt.
-          </li>
-        </ul>
-        <p><strong>Attiecības ar klientu:</strong></p>
-        <ul>
-          <li>
-            Tirgus ietvaros notiek apmaiņa, kuras rezultātā veidojas uzticība un
-            lojalitāte starp pusēm.
-          </li>
-        </ul>
-        <p><strong>Peļņa:</strong></p>
-        <ul>
-          <li>Mārketinga galvenais mērķis ir radīt peļņu.</li>
-          <li>
-            Apakšmērķi var būt saistīti ar mājas lapas apmeklējumiem, zīmola
-            atpazīstamību, uzņēmuma tēlu un citiem rādītājiem, kas veicina
-            peļņas veidošanos.
-          </li>
-        </ul>
-      </section>
+        <section class="chapter">
+            <h2>Ekonomiskie Rādītāji un Tendences</h2>
+            <p>Dažādi ekonomiskie rādītāji palīdz analizēt globālās ekonomikas stāvokli un attīstības tendences.</p>
+            <div class="chart-container">
+                <canvas id="profitRateChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> Peļņas normas izmaiņas privātajā uzņēmējdarbībā Eiropā un ASV (aptuveni 1960-2001). Ilustratīvs attēlojums, kas parāda peļņas normu svārstības un atšķirības starp reģioniem.</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="dividendPayoutChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> Dividendēs izmaksātā peļņas daļa Francijas un ASV nefinanšu korporācijās (aptuveni 1960-2000). Ilustratīvs attēlojums, kas parāda, kāda daļa no peļņas tiek sadalīta dividendēs.</p>
+            </div>
+            <h3>Pasaules kopprodukts</h3>
+            <p>Pasaules kopproduktu (Y) var aprēķināt kā: Y = C + I + G + X – M (patēriņš, investīcijas, valdības izdevumi, neto eksports). Globāli tas ir visu valstu kopproduktu summa: Y = Σ ( C + I + G + X – M). No ienākumu puses: Y = W + OS + ITS (darba algas, operacionālais pārpalikums, netiešie nodokļi mīnus subsīdijas).</p>
+        </section>
 
-      <!-- Pamati un mērķi -->
-      <section id="pamati" class="slide">
-        <h2>Mārketinga pamati un mērķi</h2>
-        <p>
-          Mārketings ir ekonomisks termins, kas iekļauj uzņēmuma organizāciju,
-          mārketinga komunikāciju (t.sk. reklāmu – noietas darbības), tirgus
-          analīzi un izpēti, kā arī produkta dzīves cikla pārvaldību ar mērķi
-          apmierināt pieprasījumu un radīt peļņu.
-        </p>
-        <p>Mārketinga mērķi var būt dažādi, piemēram:</p>
-        <ul>
-          <li>
-            Maksimāli augsta pieprasījuma līmeņa sasniegšana, kas nodrošina
-            izaugsmi un labklājību.
-          </li>
-          <li>
-            Maksimāla patērētāju apmierinātība – uzsvars ne tikai uz
-            pieprasījuma daudzumu, bet arī uz kvalitāti.
-          </li>
-          <li>
-            Maksimāli plaša izvēle, lai pircējam nodrošinātu vispiemērotākās
-            preces.
-          </li>
-          <li>
-            Maksimāla dzīves kvalitāte, kas ir svarīgs, bet grūti mērāms
-            rādītājs.
-          </li>
-        </ul>
-        <p>
-          Mārketinga disciplīna pastāv gan zinātniskā, gan praktiskā līmenī,
-          turpinoties un pielāgojoties mainīgajām tirgus prasībām.
-        </p>
-      </section>
+        <section class="chapter">
+            <h2>Starptautiskā Tirdzniecība: GATT un WTO Evolūcija</h2>
+            <p>Starptautiskās tirdzniecības liberalizācija un regulēšana ir bijusi būtiska globālās ekonomikas attīstībā.</p>
+            <h3>Liberalizācijas nepieciešamība un GATT pirmsākumi</h3>
+            <p>Vajadzība pēc starptautiskās tirdzniecības liberalizācijas aktualizējās pēc Lielās Depresijas un Otrā Pasaules kara. Tā rezultātā 1947. gadā tika dibināta Vispārējā vienošanās par tarifiem un tirdzniecību (GATT).</p>
+            <div class="chart-container">
+                <canvas id="usTariffRatesChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> ASV vidējās tarifu likmes muitojamām importa precēm (1900-1992). Ilustratīvs attēlojums, kas parāda tarifu likmju dinamiku, izceļot tādu notikumu kā Smūta-Holija tarifs un sekojošās liberalizācijas tendences ietekmi.</p>
+            </div>
+            <h3>GATT pamatprincipi un sarunu raundi</h3>
+            <p>GATT balstījās uz diskriminācijas novēršanu (vislielākās labvēlības princips, nacionālais traktējums), abpusējību, maiņas ierobežojumu aizliegšanu un komercstrīdu risināšanu sarunās. Notika vairāki sarunu raundi, piemēram, Kenedija raunds (1964-1967) un Tokijas raunds (1973-1979), kuros tika samazināti tarifi un pieņemti kodeksi par netarifu barjerām.</p>
+            <h3>Urugvajas raunds un PTO izveide</h3>
+            <p>Urugvajas raunds (1986–1993) noveda pie Pasaules Tirdzniecības organizācijas (PTO) izveides 1995. gadā. Tas aptvēra tirgus pieejamību (preces, pakalpojumi - GATS, intelektuālais īpašums - TRIPS) un institucionālos jautājumus.</p>
+            <h4>Viltojumu Izmaksas ES (Vidēji gadā 2012-2016, EUIPO, 2019)</h4>
+            <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Nozare</th><th>Tiešie pārdošanas zaudējumi (mlrd EUR)</th><th>% no pārdošanas</th><th>Kopējie pārdošanas zaudējumi (mlrd EUR)</th><th>Zaudējumi valsts ieņēmumos (mlrd EUR)</th></tr></thead>
+                <tbody>
+                    <tr><td>Apģērbs, apavi</td><td>28,4</td><td>9,7%</td><td>45,9</td><td>8,6</td></tr>
+                    <tr><td>Kosmētika, higiēna</td><td>7,1</td><td>10,5%</td><td>11,2</td><td>2,6</td></tr>
+                    <tr><td>Farmācija</td><td>9,6</td><td>3,9%</td><td>16,5</td><td>1,7</td></tr>
+                    <tr><td><strong>KOPĀ (visas nozares)</strong></td><td><strong>56,0</strong></td><td><strong>vidēji 7,4%</strong></td><td><strong>92,3</strong></td><td><strong>16,3</strong></td></tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="chart-container">
+                <canvas id="tradeGrowthChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> Ekonomiskā izaugsme un starptautiskās tirdzniecības pieaugums (2000–2018). Ilustrē IKP izmaiņas, tirdzniecības izmaiņas un tirdzniecības īpatsvaru globālajā izlaide. Dati: UNCTAD.</p>
+            </div>
+        </section>
+        
+        <section class="chapter">
+            <h2>Pasaules Ekonomikas Dalījums un Reģionālās Īpatnības</h2>
+            <p>Pasaules saimniecību raksturo dažādi attīstības līmeņi un reģionālas atšķirības, ko bieži analizē caur "centra-perifērijas" modeli.</p>
+            <div class="image-placeholder">
+                <strong>Diagramma: Pasaules saimniecības dalījums mūsdienās (Centrs-Perifērija)</strong>
+                <p>Shematiski attēloti trīs pārklājošies apļi, katrs ar "centru" un "perifēriju", ilustrējot attīstītāku centru mijiedarbību ar mazāk attīstītām teritorijām.</p>
+            </div>
+            <h3>Eiropa kā neviendabīgs sociāli ekonomisks veidojums</h3>
+            <p>Eiropā izšķiramas Rietumeiropas industriāli attīstītās valstis, Centrālās un Austrumeiropas valstis (tostarp Baltijas valstis, kurām nacionālā neatkarība bija priekšnoteikums politiskām pārmaiņām un ekonomiskajai liberalizācijai), un Austrumeiropas Austrumu daļa, katra ar savām attīstības iezīmēm.</p>
+            <h3>Tautsaimniecību klasifikācija</h3>
+            <p>Tautsaimniecības raksturo teritoriāli ģeogrāfiskie nosacījumi, iedzīvotāji un tehnikas attīstības līmenis. Ekonomiskās sistēmas klasificē pēc koordinācijas mehānisma (tradicionālā, tirgus, komandekonomika) un dominējošās īpašuma formas (privātais, sabiedriskais, jauktais).</p>
+        </section>
 
-      <!-- Pamatelementi -->
-      <section id="pamatelementi" class="slide">
-        <h2>Mārketinga pamatelementi</h2>
-        <h3>Vēlmes</h3>
-        <p>
-          Vēlmes ir cilvēka iekšēja nepieciešamība pēc kaut kā – motivācija, kas
-          stimulē patēriņu.
-        </p>
-        <h3>Vajadzības</h3>
-        <p>
-          Vajadzības ir objektīva kategorija, kas pastāv neatkarīgi no cilvēka
-          gribas un apziņas, ietekmējoties no sabiedrības attīstības un
-          individuālajām īpašībām.
-        </p>
-        <h3>Vajadzību apmierināšana</h3>
-        <p>
-          Procesā, kurā tiek apmierinātas vajadzības, var rasties trīs līmeņi:
-        </p>
-        <ul>
-          <li>Neapmierināta vajadzība</li>
-          <li>Daļēji apmierināta vajadzība</li>
-          <li>Pilnīgi apmierināta vajadzība</li>
-        </ul>
-        <h3>Pieprasījums</h3>
-        <p>
-          Pieprasījums atspoguļo cilvēka vēlmi iegādāties konkrētus produktus,
-          balstoties uz viņa vajadzībām un finansiālajām iespējām.
-        </p>
-        <h3>Produkts un tā vērtība</h3>
-        <p>
-          Produkts ir viss, kas spēj apmierināt kādas vajadzības, un tā vērtība
-          tiek vērtēta pēc ieguvumiem, ko tas sniedz patērētājam – izmaksu,
-          kvalitātes un citu faktoru ziņā.
-        </p>
-        <h3>Sagaidāmā vērtība</h3>
-        <p>
-          Sagaidāmā vērtība ietver produkta, pakalpojuma, personāla un tēla
-          vērtību, salīdzinot ar patērētāja kopējām izmaksām (nauda, laiks,
-          enerģija, emocionālais slodze).
-        </p>
-        <h3>Maiņa</h3>
-        <p>
-          Maiņa nozīmē vēlamā objekta iegūšanu, kurā abas puses sniedz kaut ko
-          vērtīgu. Efektīvai maiņai ir nepieciešami saskaņoti noteikumi – laiks,
-          vieta, un vienošanās par apmaiņas vērtību.
-        </p>
-        <h3>Darījumi (transakcijas)</h3>
-        <p>
-          Darījuma priekšnosacījumi ir divu (vai vairāku) pušu apmaiņas process,
-          kurā visi darījuma noteikumi un laika/vietas nosacījumi ir saskaņoti.
-        </p>
-        <h3>Barters</h3>
-        <p>
-          Barters ir preču vai pakalpojumu apmaiņa bez naudas izmaksām, kas
-          palīdz saglabāt organizācijas finanšu līdzekļus un palielināt
-          apgrozījumu.
-        </p>
-      </section>
+        <!-- CONTINUING NEW CHAPTERS -->
 
-      <!-- Produktu iegūšanas iespējas -->
-      <section id="produktu-iegusana" class="slide">
-        <h2>Produktu iegūšanas iespējas</h2>
-        <p>Produktu iegūšanas iespējas var būt sekojošas:</p>
-        <ul>
-          <li>
-            <strong>I. Pašapgāde (naturālā saimniecība):</strong> Produkta
-            ražošana iekšēji.
-          </li>
-          <li>
-            <strong>II. Decentralizēta maiņa:</strong> Vienkārša, gadījuma
-            maiņas forma (piemēram, A prece pret B preci).
-          </li>
-          <li>
-            <strong>III. Centralizēta maiņa:</strong> Vispārēja maiņas forma,
-            kurā preces var mainīties ar naudas formu vai citu ekvivalentu.
-          </li>
-        </ul>
-      </section>
+        <section class="chapter">
+            <h2>Protekcionisms, Tirdzniecības Dinamika un Intelektuālais Īpašums</h2>
+            <p>Starptautiskajā tirdzniecībā pastāvīgi mijiedarbojas divi pretēji virzieni: protekcionisms, kas cenšas aizsargāt vietējo tirgu, un liberalizācija, kas veicina brīvāku preču un pakalpojumu plūsmu.</p>
+            <h3>Situācijas Izmaiņas 80. Gados un Protekcionisma Izmaksas</h3>
+            <p>Astoņdesmitie gadi iezīmējās ar pakalpojumu tirdzniecības attīstību, pieaugošu nepieciešamību pēc intelektuālā īpašuma aizsardzības, "lauksaimniecības produkcijas kariem" un "labprātīgo" eksporta ierobežojumu izplatīšanos. Protekcionisms rada izmaksas, piemēram, ASV cukura vai Japānas rīsu tirgus aizsardzība sadārdzina šos produktus patērētājiem, līdzīgi kā rūpniecības preču, piemēram, apģērbu vai automobiļu, importa ierobežojumi.</p>
+            <h3>Intelektuālā Īpašuma Aizsardzības Aspekti</h3>
+            <p>Intelektuālā īpašuma (IĪ) aizsardzība ir kļuvusi par centrālu jautājumu. Dažādiem IĪ veidiem (patenti, tirdzniecības markas, rūpnieciskais dizains, autortiesības) ir atšķirīgi aizsardzības mehānismi un objekti.</p>
+             <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Aizsardzības Veids</th><th>Patenti</th><th>Tirdzniecības Marka</th><th>Rūpnieciskais Dizains</th><th>Autortiesības</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Aizsargāts pret</strong></td><td>Lietošanu, pārdošanu, ražošanu bez atļaujas</td><td>Neatļautu identiskas vai maldinoši līdzīgas markas lietošanu</td><td>Neatļautu dizaina kopēšanu, ražošanu, pārdošanu</td><td>Neatļautu kopēšanu, reproducēšanu, izplatīšanu</td></tr>
+                        <tr><td><strong>Kas tiek aizsargāts</strong></td><td>Jauni izgudrojumi (produkti, procesi)</td><td>Produkta/pakalpojuma identitāte (vārdi, logo, simboli)</td><td>Produkta ārējais izskats, vizuālais aspekts</td><td>Oriģināldarbi literatūrā, mākslā, mūzikā, datorprogrammas u.c.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Dohas sarunu raunds (sākot ar 2001. gadu) turpināja risināt šos jautājumus, īpaši attiecībā uz medikamentu pieejamību un patentu aizsardzību, kas ilustrē pieaugošo koncentrāciju farmācijas nozarē.</p>
+            <h4>Medikamentu Ražošanas Koncentrācija Pasaulē (Pirmās 10 Grupas)</h4>
+             <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Gads</th><th>Pirmo 10 grupu īpatsvars</th><th>ASV grupu īpatsvars</th><th>ASV grupu skaits</th><th>Apgrozījums (piemērs)</th></tr></thead>
+                    <tbody>
+                        <tr><td>1988.g.</td><td>25%</td><td>10,4%</td><td>4</td><td>N/A</td></tr>
+                        <tr><td>2000.g.</td><td>46%</td><td>26,8%</td><td>6</td><td>ASV grupas: 78,4 mljrd. $; Citas (no top 10): 56,7 mljrd.$</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-      <!-- Tirgus -->
-      <section id="tirgus" class="slide">
-        <h2>Tirgus un tā elementi</h2>
-        <p>
-          <strong>Tirgus</strong> ir esošo un potenciālo pircēju kopums, kurš
-          spēj apmierināt vajadzības ar atbilstošiem produktiem.
-        </p>
-        <p><strong>Izveidotie tirgus elementi:</strong></p>
-        <ul>
-          <li>
-            <strong>Pieprasījums:</strong> Preču un pakalpojumu pieprasījums
-            tirgū.
-          </li>
-          <li>
-            <strong>Produktu masa:</strong> Preces, kas ir ražotas, uzkrātas vai
-            pieejamas tirgū.
-          </li>
-          <li><strong>Cena:</strong> Preces vērtība naudas izteiksmē.</li>
-          <li>
-            <strong>Vērtība:</strong> Sabiedriski nepieciešamais darbs, kas
-            ieguldīts produkta radīšanā un tā apmaiņā, balstoties uz
-            pieprasījumu un piedāvājumu.
-          </li>
-        </ul>
-      </section>
+        <section class="chapter">
+            <h2>PTO Darbības Principi un Jaunākās Tendences</h2>
+            <p>Pasaules Tirdzniecības organizācija (PTO) nosaka globālās tirdzniecības noteikumus.</p>
+            <h3>PTO Dalībvalstu Saistības un Funkcijas</h3>
+            <p>Dalība PTO uzliek saistības saskaņā ar MATG (preces), GATS (pakalpojumi), TRIPS (intelektuālais īpašums), DSU (strīdu izšķiršana) un TPRM (politikas pārskatīšana). PTO administrē šos līgumus, kalpo par sarunu forumu, risina strīdus, monitorē tirdzniecības politikas un sniedz tehnisko palīdzību attīstības valstīm. Nozīmīgs notikums bija Ķīnas un Taivānas (kā "Ķīnas Taipejas") pievienošanās PTO.</p>
+            <div class="chart-container">
+                <canvas id="usTariffChangesChart"></canvas> <!-- Canvas ID from previous response -->
+                <p class="chart-description"><strong>Grafiks:</strong> ASV tarifu izmaiņas salīdzinājumā ar citām G7 valstīm un jaunattīstības tirgiem (ap 2017.-2019.g.). Ilustratīvs attēlojums. Avots: World Bank, DB Global Research.</p>
+            </div>
+        </section>
 
-      <!-- Mārketinga koncepcijas -->
-      <section id="koncepcijas" class="slide">
-        <h2>Mārketinga koncepcijas un to attīstība</h2>
-        <p><strong>Koncepcijas ietver:</strong></p>
-        <ul>
-          <li>Ražošanas koncepcija</li>
-          <li>Produkta koncepcija</li>
-          <li>Pārdošanas koncepcija</li>
-          <li>Pircēja (klasiskā) mārketinga koncepcija</li>
-          <li>Sociālā (sociāli ētiskā) mārketinga koncepcija</li>
-        </ul>
-        <h3>Koncepciju attīstība un mārketinga vēsture</h3>
-        <p>Mārketinga vēsture aptver vairākus laikmetus:</p>
-        <ul>
-          <li>
-            <strong>Aroda laikmets:</strong> Preces – roku darbs, ierobežots
-            preču daudzums, pārdod vai apmainās vietējā līmenī.
-          </li>
-          <li>
-            <strong
-              >Ražošanas orientēta mārketinga laikmets (1860.–1920.g.):</strong
-            >
-            Uz ražošanas efektivitātes paaugstināšanu un masveida ražošanu
-            koncentrēšanās.
-          </li>
-          <li>
-            <strong
-              >Produkta orientēta mārketinga laikmets (aptuveni
-              1900–1920.g.):</strong
-            >
-            Pieprasījuma pieaugums stimulē produkta kvalitātes uzlabošanu.
-          </li>
-          <li>
-            <strong>Pārdošanas (realizācijas) koncepcija:</strong> Uzsvars uz
-            pārdošanas aktivitātēm – reklāma, atlaides, dāvanas un citi
-            stimulējoši pasākumi.
-          </li>
-          <li>
-            <strong>Pircēja koncepcija:</strong> Fokusēšanās uz individuālo
-            pircēju vajadzību un vēlmes izpēti, lai pielāgotu produkta ražošanu
-            un realizāciju.
-          </li>
-          <li>
-            <strong>Sociālā mārketinga koncepcija:</strong> Mērķis – apmierināt
-            pircēju vajadzības, vienlaikus veicinot sabiedrības labklājību
-            (veselība, ekoloģija u.c.).
-          </li>
-        </ul>
-        <p>
-          Mūsdienās mārketings turpina attīstīties ar digitālo, sociālo un
-          mobilā komunikācijas kanālu ieviešanu, nodrošinot aktīvu dialogu un
-          individuālu pieeju.
-        </p>
-      </section>
+        <section class="chapter">
+            <h2>Starptautiskās Tirdzniecības Faktori, Konkurētspēja un Ietekme</h2>
+            <p>Starptautiskās tirdzniecības attīstību ietekmē daudzveidīgi faktori, kas nosaka valstu konkurētspēju un tirdzniecības plūsmu raksturu.</p>
+            <h3>Tirdzniecību Ietekmējošie Faktori</h3>
+            <p>Galvenie faktori, kas veicina vai kavē starptautisko tirdzniecību, ir:</p>
+            <ul>
+                <li><strong>Ģeogrāfiskā situācija:</strong> Valsts atrašanās vieta, piekļuve jūrai, kaimiņvalstis.</li>
+                <li><strong>Vispārējā gaisotne:</strong> Politiskā stabilitāte, ekonomiskā vide, uzticēšanās līmenis.</li>
+                <li><strong>Politiskā vara:</strong> Valdības politika attiecībā uz tirdzniecību, starptautiskie līgumi.</li>
+                <li><strong>Transporta veidu attīstība:</strong> Efektīvāka un lētāka preču pārvadāšana veicina tirdzniecību. Transportēšanas ātrums ir krasi pieaudzis, sākot no buru kuģiem (16 km/h) līdz modernām reaktīvajām lidmašīnām (virs 800 km/h).</li>
+                <li><strong>Atklājumu un piedzīvojumu alkas:</strong> Vēsturiski nozīmīgs faktors jaunu tirgu un preču meklējumos.</li>
+                <li><strong>Vēlme iegūt bagātību:</strong> Individuāls un nacionāls ekonomiskais ieguvums.</li>
+            </ul>
+            <p>Ārējās tirdzniecības ietekme uz valsts ekonomiku ir tieša: pieaugot eksportam (X) attiecībā pret importu (M), palielinās iekšzemes kopprodukts (Y = C + I + G + (X – M)), kas veicina ekonomisko izaugsmi un peļņas palielināšanos. Savukārt tirdzniecības kritums var radīt ekonomiskus zaudējumus.</p>
 
-      <!-- Mārketinga evolūcija -->
-      <section id="evolucija" class="slide">
-        <h2>Mārketinga evolūcijas posmi</h2>
-        <ul>
-          <li>
-            <strong>19.gs. beigas – 20.gs. sākums:</strong> Masveida ražošanas
-            attīstības posms.
-          </li>
-          <li>
-            <strong
-              >1. PRODUKCIJAS (ražošanas pilnveidošanas) koncepcija:</strong
-            >
-            Uzņēmumi koncentrējas uz ražošanas efektivitātes paaugstināšanu,
-            samazinot produkcijas pašizmaksu un uzlabojot sadales sistēmu.
-          </li>
-          <li>
-            <strong>2. PREČU (produkta) pilnveidošanas koncepcija:</strong>
-            Pircēji dod priekšroku augstākas kvalitātes precēm, stimulējot
-            produktu kvalitātes uzlabojumus.
-          </li>
-          <li>
-            <strong
-              >3. PĀRDOŠANAS (realizācijas, kommercpasākumu) koncepcija:</strong
-            >
-            Uzsvars uz pārdošanas aktivitātēm, lai palielinātu realizācijas
-            apjomus.
-          </li>
-          <li>
-            <strong>4. PIRCĒJA (marketinga) koncepcija:</strong> Pircēju
-            vajadzību izpēte un pielāgošanās, nodrošinot ilgtermiņa attiecību
-            veidošanu un lojalitāti.
-          </li>
-          <li>
-            <strong>5. SOCIĀLĀ (sociāli ētiskā) mārketinga koncepcija:</strong>
-            Integrē sabiedrības intereses un mērķus, apmierinot gan pircēju, gan
-            sabiedrības vajadzības.
-          </li>
-        </ul>
-      </section>
+            <h3>Produkcijas Konkurētspējas Noteikšana</h3>
+            <p>Valsts vai produkta konkurētspēju starptautiskajā tirgū var novērtēt, izmantojot dažādus rādītājus, piemēram, analizējot eksporta un importa daļas konkrētām precēm valstī vai reģionā attiecībā pret kopējo eksportu/importu.</p>
+            <p>Piemēram, preces A eksporta konkurētspēju valstī C var salīdzināt ar tās pašas preces A eksporta daļu plašākā reģionā D:
+            <pre>(Eksports precei A valstī C / Kopējais eksports valstī C)
+-----------------------------------------------------
+(Eksports precei A reģionā D / Kopējais eksports reģionā D)</pre>
+            Līdzīgu analīzi var veikt importam.</p>
 
-      <!-- Mārketinga vadīšana -->
-      <section id="vadisana" class="slide">
-        <h2>Mārketinga vadīšana un modelis</h2>
-        <p>Mārketinga vadīšana balstās uz šiem galvenajiem soļiem:</p>
-        <ol>
-          <li>Analizēt situāciju</li>
-          <li>Noteikt mērķus</li>
-          <li>Plānot un veikt pasākumus</li>
-          <li>Veikt kontroli</li>
-        </ol>
-        <p>
-          Šis modelis palīdz uzņēmumiem veidot mērķtiecīgu orientāciju uz tirgu
-          un attīstīt savas mārketinga stratēģijas.
-        </p>
-      </section>
+            <h3>Ieguvumi un Argumenti Pret Starptautisko Tirdzniecību</h3>
+            <p>Starptautiskā tirdzniecība sniedz būtiskus ieguvumus no specializācijas, risina ekonomikas pašnodrošinātības problēmas, apmierina patērētāju un uzņēmumu intereses, kā arī veicina starpniecības un aģentūru darbību. Tomēr pastāv arī argumenti pret pārmērīgu paļaušanos uz ārējo tirdzniecību:</p>
+            <ul>
+                <li>Nācijas atkarība no ārējiem piegādes avotiem, kas var būt riskanti krīzes situācijās.</li>
+                <li>Potenciāls nestabilitātes cēlonis, ja globālie tirgi ir svārstīgi.</li>
+                <li>Zaudējumi vietējai ražošanai, ja tā nespēj konkurēt ar importu.</li>
+            </ul>
+        </section>
 
-      <!-- Marketing Mix -->
-      <section id="mix" class="slide">
-        <h2>Mārketinga komplekss (Marketing Mix)</h2>
-        <p>
-          Mārketinga komplekss ir uzņēmuma kontrolē esošo mārketinga instrumentu
-          kopums, kuru izmanto, lai iegūtu vēlamās reakcijas no mērķa tirgus. Šo
-          koncepciju bieži dēvē arī par “mārketinga mikss”, kuru popularizēja
-          N.H. Bordens 1964. gadā.
-        </p>
-        <h3>Firmas “4 P” un Pircēja “4 C”</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Firmas “4 P”</th>
-              <th>Pircēja “4 C”</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Product</strong> – Produkts</td>
-              <td>
-                <strong>Customer needs &amp; wants</strong> – Vēlmes un
-                vajadzības
-              </td>
-            </tr>
-            <tr>
-              <td><strong>Price</strong> – Cena</td>
-              <td><strong>Cost to customer</strong> – Izmaksas</td>
-            </tr>
-            <tr>
-              <td><strong>Place</strong> – Sadale</td>
-              <td><strong>Convenience</strong> – Ērtības</td>
-            </tr>
-            <tr>
-              <td><strong>Promotion</strong> – Virzīšana</td>
-              <td><strong>Communication</strong> – Saskarsme</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        <section class="chapter">
+            <h2>Piegādes Ķēžu Ievainojamība un Risku Pārvaldība</h2>
+            <p>Globalizētā ekonomikā piegādes ķēdes ir kļuvušas garas un sarežģītas, padarot tās ievainojamas pret dažādiem satricinājumiem. To analīze un risku pārvaldība ir kļuvusi par būtisku uzdevumu.</p>
+            <h3>Piegādes ķēžu "ievainojamības" koncepts</h3>
+            <p>Piegādes ķēžu ievainojamību var analizēt no diviem aspektiem:</p>
+            <ul>
+                <li><strong>Ievainojamība starptautiskā pieprasījuma dēļ:</strong> Cik lielā mērā nozare vai produkts ir atkarīgs no pieprasījuma svārstībām ārvalstu tirgos.</li>
+                <li><strong>Ievainojamība starptautiskā piedāvājuma dēļ:</strong> Cik lielā mērā nozare ir atkarīga no izejvielu, komponentu vai pakalpojumu piegādēm no ārvalstīm.</li>
+            </ul>
+            <div class="image-placeholder">
+                <strong>Diagramma: Piegādes ķēžu “ievainojamības” matrica</strong>
+                <p>Shematiska 2x2 matrica. Vertikālā ass (augšup): "ievainojamība starptautiskā Pieprasījuma dēļ". Horizontālā ass (pa labi): "ievainojamība starptautiskā piedāvājuma dēļ". Augšējais labais kvadrants apzīmēts kā "visjutīgākās" nozares (augsta ievainojamība gan no pieprasījuma, gan piedāvājuma puses). Apakšējais kreisais kvadrants - "vismazāk jutīgās".</p>
+            </div>
+            <p>Lai pārvaldītu šos riskus, nepieciešams:</p>
+            <ul>
+                <li>Noteikt nozares, kas ir īpaši neaizsargātas pret piegādes augšup (izejvielu sadārdzinājums/trūkums) un lejup (pieprasījuma kritums) vērstiem satricinājumiem.</li>
+                <li>Identificēt neaizsargātus transporta ceļus un kritiskos ieejas/izejas punktus starptautiskajās piegādes ķēdēs.</li>
+                <li>Apzināt preces ar ierobežotu piegādi un augstu koncentrācijas līmeni no konkrētiem piegādātājiem.</li>
+            </ul>
 
-      <!-- Noslēgums -->
-      <section id="paldies" class="slide">
-        <p>
-          Šis materiāls sniedz pārskatu par mārketinga jēdzieniem, koncepcijām,
-          evolūcijas posmiem un vadīšanas principiem – viss, kas nepieciešams,
-          lai apgūtu mārketinga pamatus mūsdienu biznesa vidē.
-        </p>
-      </section>
-      <div><a href="otrais.html">Nākamais</a></div>
-    </div>
-  </body>
+            <h4>Pret piegādes ķēžu traucējumiem neaizsargātu nozaru analīzes elementi</h4>
+            <p>Analizējot nozaru ievainojamību, tiek vērtēti tādi aspekti kā:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>Jutīgums pret augšupvērstiem lēcieniem (piedāvājuma šoki)</th><th>Analīzes elements</th><th>Jutīgums pret lejupvērstiem lēcieniem (pieprasījuma šoki)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Starpposma ievades (intermediate input) atkarība</td><td>Vietējā rūpniecība</td><td>Eksporta apjoms</td></tr>
+                        <tr><td>Starpposma importa (Intermediate import) īpatsvars</td><td></td><td>Netiešais eksports (Indirect export) caur citām nozarēm</td></tr>
+                        <tr><td>Netiešā importa (Indirect import) īpatsvars</td><td></td><td></td></tr>
+                        <tr><td>Importa ģeogrāfiskā koncentrācija</td><td></td><td>Eksporta ģeogrāfiskā koncentrācija</td></tr>
+                        <tr><td>Ierobežota piedāvājuma klāsts / kritisko piegādātāju skaits</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Piemēram, Kanādas analīze parādīja, ka ASV ir galvenais piegādātājs daudzām precēm, bet Ķīna dominē kā piegādātājs citās kategorijās, norādot uz potenciāliem riska punktiem.</p>
+        </section>
+
+        <section class="chapter">
+            <h2>Starptautiskie Pakalpojumi: Veidi un Dinamika</h2>
+            <p>Pakalpojumu tirdzniecība ir kļuvusi par arvien nozīmīgāku globālās ekonomikas sastāvdaļu, un to raksturo specifiskas iezīmes salīdzinājumā ar preču tirdzniecību.</p>
+            <h3>Starptautisko pakalpojumu sniegšanas veidi (GATS klasifikācija)</h3>
+            <p>Saskaņā ar Vispārējo vienošanos par pakalpojumu tirdzniecību (GATS), izšķir četrus galvenos starptautisko pakalpojumu sniegšanas veidus:</p>
+            <ol>
+                <li><strong>Pārrobežu tirdzniecība (cross-border trade):</strong> Pakalpojums tiek sniegts no vienas valsts teritorijas uz citas valsts teritoriju (piemēram, programmatūras izstrāde attālināti).</li>
+                <li><strong>Patērēšana ārvalstīs (consumption abroad):</strong> Vienas valsts patērētājs izmanto pakalpojumu citas valsts teritorijā (piemēram, tūrisms, medicīnas pakalpojumi ārzemēs).</li>
+                <li><strong>Komercklātbūtne (commercial presence):</strong> Pakalpojumu sniedzējs no vienas valsts izveido komerciālu klātbūtni (filiāli, meitasuzņēmumu) citas valsts teritorijā, lai sniegtu pakalpojumus (piemēram, ārvalstu bankas filiāle).</li>
+                <li><strong>Fizisko personu pārvietošanās (movement of natural persons):</strong> Vienas valsts fiziska persona īslaicīgi iebrauc citas valsts teritorijā, lai sniegtu pakalpojumu (piemēram, konsultants, vieslektors).</li>
+            </ol>
+
+            <h3>Starptautiskās pakalpojumu tirdzniecības īpatnības</h3>
+            <p>Salīdzinot ar preču tirdzniecību, pakalpojumu tirdzniecībai ir gan līdzības, gan būtiskas atšķirības:</p>
+            <ul>
+                <li><strong>Līdzīgais:</strong>
+                    <ul>
+                        <li>Abas ir valūtas ienākumu avots.</li>
+                        <li>Abas tiek vienādi ierakstītas maksājumu bilancē.</li>
+                        <li>Abas strauji attīstās globalizācijas ietekmē.</li>
+                        <li>Abām nepieciešams starptautisks regulējums.</li>
+                    </ul>
+                </li>
+                <li><strong>Atšķirīgais:</strong>
+                    <ul>
+                        <li>Pakalpojumu tirdzniecība bieži sākas ar iekšējo tirgu.</li>
+                        <li>Daži pakalpojumu veidi neiegūst starptautisku raksturu (piemēram, ļoti lokalizēti pakalpojumi).</li>
+                        <li>Nav iespējams radīt pakalpojumu uzkrājumu, jo tiem nav materiālas formas; pakalpojums bieži ir vienreizējs akts.</li>
+                        <li>Nav iespējama pakalpojumu pārpārdošana.</li>
+                        <li>Par pakalpojuma veikšanu bieži var tikai liecināt (grūtāk kontrolēt kvalitāti).</li>
+                        <li>Parasti augstāka eksporta efektivitāte un zemāka importa efektivitāte (grūtāk aizstāt ar importu).</li>
+                        <li>Nav nepieciešama muitas procedūra tradicionālajā izpratnē.</li>
+                        <li>Bieži sastopamas lielākas protekcionisma barjeras (piemēram, licenzēšanas prasības, kvalifikācijas atzīšanas problēmas) nekā preču tirdzniecībā.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Nozīmīgākie starptautisko pakalpojumu veidi</h3>
+            <p>Daži no galvenajiem starptautisko pakalpojumu veidiem ietver:</p>
+            <ul>
+                <li><strong>Ražošanas pakalpojumi</strong> (ieskaitot tos, kas tiek sniegti starp vienas firmas struktūrvienībām dažādās valstīs un netiek oficiāli fiksēti kā starptautiska tirdzniecība).</li>
+                <li><strong>Uzņēmējdarbības formas ārzemēs</strong> (piemēram, franšīzes, filiāles).</li>
+                <li><strong>Transporta pakalpojumi:</strong> Būtiski starptautiskās preču un personu kustības nodrošināšanai. Tos veicina starptautiskās tirdzniecības, tehnoloģiju un politiskās varas attīstība. Transporta loģistika ietver preču transportēšanu, izvietošanu, uzkrājumu pārvaldīšanu, iesaiņošanu un etiķetēšanu. Starptautiskajiem transporta pakalpojumiem raksturīgas lielas distances, valūtas maiņas nepieciešamība, robežu šķērsošana, ātruma prasības un atšķirības regulējumā starp valstīm. Izmaksu grupas ietver pārvadājumu izmaksas, uzglabāšanas/pārkraušanas izmaksas, iesaiņojuma/marķēšanas izmaksas, termināla izmaksas, dokumentācijas kārtošanu, apdrošināšanu un tranzītpārvadājuma laiku. Tirdzniecības nosacījumus bieži regulē Incoterms (piem., EXW, FCA, FAS, FOB, CFR, CIF, CPT, CIP).</li>
+                <li><strong>Tūrisms:</strong> Viens no lielākajiem un straujāk augošajiem pakalpojumu sektoriem.</li>
+            </ul>
+            
+            <h4>Tūrisma Dinamika (UNWTO dati)</h4>
+            <p>Ienākošais tūrisms pasaulē ir piedzīvojis ievērojamu izaugsmi:</p>
+            <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Gads</th><th>Starptautisko tūristu skaits (aptuveni)</th></tr></thead>
+                <tbody>
+                    <tr><td>1950</td><td>25 miljoni</td></tr>
+                    <tr><td>2005</td><td>Papildus ~4 miljardi vietējo ceļotāju (globāli)</td></tr>
+                    <tr><td>2012</td><td>1 miljards starptautisko</td></tr>
+                    <tr><td>2019</td><td>1,5 miljardi starptautisko</td></tr>
+                    <tr><td>2020</td><td>Būtisks kritums COVID-19 dēļ (piem., lidojumu skaits APAC reģionā kritās par 31%, Z Amerikā par 41%, Eiropā par 54%)</td></tr>
+                    <tr><td>2030 (prognoze pirms pandēmijas)</td><td>1,8 miljardi starptautisko</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <p>COVID-19 pandēmija radīja milzīgu negatīvu ietekmi uz tūrisma nozari, piemēram, Tokijas Olimpiskajās spēlēs (pārceltas uz 2021.g.) ienākošais tūrisms Japānā 2020. gadā samazinājās par aptuveni 87% salīdzinājumā ar 2019. gadu, un patērētāju izdevumi saistībā ar spēlēm samazinājās par aptuveni 66%.</p>
+
+            <div class="chart-container">
+                 <canvas id="covidImpactGDPChart"></canvas>
+                 <p class="chart-description"><strong>Grafiks:</strong> COVID-19 ietekme uz IKP dažādās nozarēs atsevišķās Āzijas valstīs (2020.g. salīdzinājumā ar 2019.g.). Ilustratīvs. Piemēram, Ķīnā kopējais IKP +2,35%, bet brīvdienu/tūrisma sektors -22,35%. Japānā kopējais IKP -4,86%, brīvdienu/tūrisma sektors -32,76%.</p>
+            </div>
+
+            <ul>
+                <li><strong>Tehnisko zināšanu transfērs:</strong>
+                    <ul>
+                        <li>Starptautiskās licencēšanas operācijas.</li>
+                        <li>Patentu pārdošana.</li>
+                        <li>Konsultēšana.</li>
+                        <li>Studentu mācības ārzemēs.</li>
+                        <li>Darbinieku stažēšanās.</li>
+                        <li>Starptautiskās konferences.</li>
+                        <li>Sadarbība pētniecībā.</li>
+                        <li>Starptautisko izstāžu un gadatirgu rīkošana (piemēram, vēsturiskā Lielā Izstāde Londonā 1851. gadā).</li>
+                        <li>Liela mēroga pasākumi (major events), piemēram, Olimpiskās spēles.</li>
+                    </ul>
+                </li>
+            </ul>
+             <p>Nemateriālo aktīvu īpatsvars tirgus kapitalizācijā (2019.g. dati) parāda to pieaugošo nozīmi: ASV (S&P 500) - 91%, Eiropā (Euro Stoxx 50) - 77%, Japānā (Nikkei) - 55%.</p>
+             <p>Patentēšanas principi nosaka, kas ir un kas nav patentējams (piemēram, idejas vai dabas likumi nav patentējami, bet jauni produkti, procesi un to uzlabojumi ir). Iesniegto patentu skaits pasaulē turpina augt, ar Ķīnu un ASV kā līderiem.</p>
+        </section>
+        
+        <!-- THIS IS WHERE THE BULK OF THE REMAINING SLIDES (109-180+) WOULD BE PROCESSED AND ADDED AS NEW CHAPTERS -->
+        <!-- For example, the next logical chapter could be "Ārzemju Investīcijas: Veidi, Posmi un Ietekme" -->
+        <!-- Then "Starptautiskā Kapitāla Kustība un Transnacionālās Korporācijas" -->
+        <!-- And finally "Brīvās Ekonomiskās Zonas" -->
+
+        <section class="chapter">
+            <h2>Ārzemju Investīcijas (ĀI/FI): Veidi, Posmi un Ietekme</h2>
+            <p>Ārzemju investīcijas ir būtisks kapitāla plūsmas veids starptautiskajā ekonomikā, kas ietekmē gan investējošo, gan saņemošo valsti. Tās var klasificēt pēc dažādiem kritērijiem, un to raksturs ir mainījies laika gaitā.</p>
+
+            <h3>Ārzemju investīciju vēsturiskie posmi</h3>
+            <p>Ārzemju investīciju attīstībā var izšķirt vairākus posmus:</p>
+            <ol>
+                <li><strong>Zelta laikmets privātajām investīcijām (1800–1913):</strong> Raksturīga brīva kapitāla kustība, ko veicināja zelta standarts.</li>
+                <li><strong>Starptautisko investīciju pārskatīšana (1919–1945):</strong> Pasaules karu un Lielās Depresijas ietekmē investīciju plūsmas samazinājās un tika vairāk regulētas.</li>
+                <li><strong>Starptautisko investīciju jaunā pārskatīšana (1946–1980):</strong> Pēckara atjaunošanas periods, Bretonvudas sistēma, pieaugoša valsts loma investīcijās.</li>
+                <li><strong>Vispārējās internacionalizācijas posms (sākot no 1980. gada līdz mūsdienām):</strong> Globalizācija, finanšu tirgu liberalizācija, straujš tiešo ārvalstu investīciju (FDI) pieaugums, īpaši kopš 80. gadiem. Kapitāla plūsmu īpatnības 80. gados un vēlāk 90. gados un 2000. gados demonstrēja mainīgas tendences un ģeogrāfisko sadalījumu.</li>
+            </ol>
+
+            <div class="chart-container">
+                <canvas id="fdiPercentageGWPChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> Tiešās Ārvalstu Investīcijas (FDI) kā procents no Pasaules Kopprodukta (PKP) laika posmā no 1970. līdz 2001. gadam. Ilustrē FDI pieaugošo nozīmi globālajā ekonomikā, īpaši 90. gadu beigās.</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="netResourceFlowsDevCountriesChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> Kopējās neto resursu plūsmas uz attīstības valstīm laika posmā no 1988. līdz 1996. gadam. Parāda privāto plūsmu, oficiālās attīstības palīdzības un eksporta kredītu dinamiku, izceļot privāto plūsmu pieaugumu 90. gados.</p>
+            </div>
+             <div class="chart-container">
+                <canvas id="fdiInflowsByRegionChart"></canvas>
+                <p class="chart-description"><strong>Grafiks:</strong> FDI ienākošā plūsma attīstītajās un attīstības valstīs reģionālā griezumā (1995-2006, miljardos USD). Ilustrē FDI plūsmu apjomu un sadalījumu starp dažādiem pasaules reģioniem un valstu grupām.</p>
+            </div>
+
+            <h3>Ārzemju investīciju klasifikācija</h3>
+            <p>Ārzemju investīcijas var klasificēt pēc vairākiem kritērijiem:</p>
+            <ul>
+                <li><strong>Pēc veida un mērķa:</strong>
+                    <ul>
+                        <li>Tekošās investīcijas: ietver ilgtermiņa investīcijas uzņēmējdarbībā, īstermiņa investīcijas naudas sfērā (kredīti, vekseļi), transfertus (dāvinājumus) un kapitālieguldījumu ārzemēs saldo.</li>
+                        <li>Portfeļinvestīcijas: finanšu aktīvu (akciju, obligāciju) iegāde bez kontroles pār uzņēmumu.</li>
+                        <li>Tiešās ārvalstu investīcijas (FDI): investīcijas, kas nodrošina būtisku ietekmi vai kontroli pār uzņēmumu citā valstī.</li>
+                    </ul>
+                </li>
+                <li><strong>Pēc īpašnieka:</strong> Valsts, privātās, jauktās.</li>
+                <li><strong>Pēc ilguma:</strong> Īstermiņa (līdz 1 gadam), vidēja termiņa (1-5 gadi), ilgtermiņa (virs 5 gadiem).</li>
+                <li><strong>Pēc formas:</strong>
+                    <ul>
+                        <li>Ienākumu gūšanai: aizdevumi, uzņēmuma pārdošana "ar atslēgu", portfeļinvestīcijas, tiešās investīcijas.</li>
+                        <li>Palīdzības formā (Oficiālā Attīstības Palīdzība - OAP). Piemēram, 2003. gadā ES valstis sniedza palīdzību, kas svārstījās no 0,17% (Itālija) līdz 0,84% (Dānija) no to nacionālā kopienākuma (NI).</li>
+                    </ul>
+                </li>
+                <li><strong>Pēc tipa:</strong> Tirgus (meklējot jaunus noieta tirgus), ārpus tirgus (piemēram, resursu ieguvei).</li>
+                <li><strong>Pēc rakstura:</strong> Mērķtiecīgas vai spontānas, dabiskas vai forsētas.</li>
+            </ul>
+            <div class="image-placeholder">
+                 <p><strong>Pīrāga Diagramma: Oficiālās Attīstības Palīdzības (OAP) sadalījums pa valstu ienākumu grupām (2000. gada jūnijs)</strong></p>
+                 <p>Ilustrē, ka lielākā daļa OAP tiek novirzīta vismazāk attīstītajām valstīm (20%) un citām zemu ienākumu valstīm (23%), kamēr zemu vidējo ienākumu valstis saņem 26%. Augstāku ienākumu valstis saņem mazāku daļu.</p>
+            </div>
+
+
+            <h3>Ārzemju investīciju ietekme uz nacionālo ekonomiku</h3>
+            <p>ĀI ietekmē nacionālo ekonomiku gan pozitīvi, gan negatīvi:</p>
+            <ul>
+                <li><strong>Ietekme uz nacionālo ienākumu:</strong> To var analizēt, salīdzinot ieguvumus (F - samaksa par vietējo faktoru izmantošanu, R* - filiāles ienākumi pēc nodokļiem, T - filiāles samaksātais ienākuma nodoklis, L - neto ārējie efekti) ar izmaksām (N - vietējo faktoru alternatīvā izmantošana, E - samaksa par ārzemju faktoru izmantošanu).</li>
+                <li><strong>Ietekme uz maksājumu bilanci:</strong> Novērtē, salīdzinot kapitāla ieplūdi (K - sākotnējā kapitāla investīciju plūsma, X - filiāles eksports, S - importa substitūcija) ar kapitāla aizplūdi (R** - ienākumu repatriācija, F* - repatriētie maksājumi par ārzemju faktoriem, M - filiāles imports, M* - importa pieaugums, D - filiāles likvidēšana).</li>
+            </ul>
+            <p>Valsts kā investīciju motīvu noteicēja var vadīties no ekonomiskiem, politiskiem, diplomātiskiem, ētiskiem vai humāniem mērķiem, īstenojot tālejošu politiku, manifestējot savu klātbūtni vai sekojot tradīcijām.</p>
+        </section>
+        
+        <!-- Final chapter on Free Economic Zones could go here -->
+        <section class="chapter">
+            <h2>Brīvās Ekonomiskās Zonas (BEZ)</h2>
+            <p>Brīvās ekonomiskās zonas ir īpaši noteiktas teritorijas valstī, kurās tiek piemērots labvēlīgāks ekonomiskais režīms (nodokļu atvieglojumi, muitas procedūru vienkāršošana u.c.), lai piesaistītu investīcijas, veicinātu eksportu un sekmētu reģionālo attīstību. Tās var būt orientētas uz pakalpojumiem vai ražošanu.</p>
+            <h3>BEZ modeļi un tipi</h3>
+            <p>BEZ modeļi var būt dažādi, atkarībā no mērķiem:</p>
+            <ul>
+                <li>Rūpniecības un tirdzniecības attīstība vāji attīstītās valstīs un reģionos.</li>
+                <li>Tirdznieciski distributīvas vides veidošana pie transporta ceļiem.</li>
+                <li>Starptautiskās tirdzniecības atvieglošana, modernas, uz eksportu orientētas rūpniecības veidošana.</li>
+            </ul>
+            <p>Galvenie BEZ tipi:</p>
+            <ul>
+                <li><strong>Uz pakalpojumiem orientētās:</strong> Bezmuitas tirdzniecības zonas, brīvostas, brīvās noliktavas, brīvās banku zonas, brīvās apdrošināšanas zonas.</li>
+                <li><strong>Uz ražošanu orientētās:</strong> Proeksporta zonas, speciālās ekonomiskās zonas (SEZ).</li>
+            </ul>
+            <h4>BEZ piemēri un gaidāmie efekti</h4>
+            <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Tips</th><th>Privilēģijas (piemēri)</th><th>Attiecas uz</th><th>Gaidāmie efekti</th><th>Piemēri</th></tr></thead>
+                <tbody>
+                    <tr><td>Bezmuitas ostas, noliktavas</td><td>Atbrīvošana no muitas, importa/netiešiem nodokļiem</td><td>Visām ievestām/izvestām precēm</td><td>Tirdzniecības apjoma pieaugums, reģiona attīstība</td><td>Hamburga, Adena</td></tr>
+                    <tr><td>Bezmuitas tirdzniecības zonas</td><td>Atbrīvošana no muitas, netiešiem nodokļiem</td><td>Precēm, kas pārdotas uz ārzemēm</td><td>Preču pārdošanas apjoma pieaugums</td><td>Tax-free veikali lidostās</td></tr>
+                    <tr><td>Brīvās banku zonas</td><td>Valūtas kontroles atcelšana, brīvas % likmes</td><td>Eiropas tirgu</td><td>Kapitālnoguldījumu piesaiste</td><td>Luksemburga, Londona</td></tr>
+                    <tr><td>Uz eksportu orientētas ražošanas zonas</td><td>Muitas, nodokļu atvieglojumi, vienkāršotas procedūras investoriem</td><td>Visām firmām zonā, kas ražo eksportam</td><td>Valūtas ienākumi, nodarbinātības pieaugums, tehnoloģiju transfērs</td><td>Malaizija, D-Koreja, Meksikas maquiladoras</td></tr>
+                    <tr><td>Speciālās ekonomiskās zonas</td><td>Muitas/nodokļu atvieglojumi, zema zemes rente, labvēlīgs investīciju režīms</td><td>Visām firmām zonā</td><td>Reģiona saimnieciskā attīstība</td><td>Ķīna, ASV</td></tr>
+                </tbody>
+            </table>
+            </div>
+            <h3>BEZ funkcionēšanas nosacījumi un saikņu sistēma</h3>
+            <p>BEZ veiksmīgai darbībai nepieciešami labvēlīgi dabiskie, uzņēmējdarbības un sistēmnosacījumi. To saikņu sistēma ietver plūsmas starp Pasauli, pašu Zonu un uzņemošo Valsti attiecībā uz kapitālu, peļņu, izejvielām, tehnoloģijām, darbaspēku, infrastruktūru u.c. Mērķis ir radīt pozitīvus ārējos efektus uzņemošajai valstij.</p>
+            <p>Lai gan BEZ var veicināt vāji attīstīto valstu ekonomiku, nodarbinātības pieaugumu un darba apstākļu uzlabošanos, ne vienmēr tiek panākta cieša sakarība ar eksporta diversifikāciju vai nacionālās infrastruktūras būtisku uzlabošanu, un pastāv risks "mirušo" zonu izveidei.</p>
+        </section>
+
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search-input');
+            const contentContainer = document.getElementById('content-container');
+            const chapters = Array.from(contentContainer.getElementsByClassName('chapter'));
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+
+                chapters.forEach(function (chapter) {
+                    if (searchTerm === '') {
+                        chapter.classList.remove('chapter-hidden');
+                        return;
+                    }
+                    
+                    const chapterText = chapter.textContent.toLowerCase();
+                    if (chapterText.includes(searchTerm)) {
+                        chapter.classList.remove('chapter-hidden');
+                    } else {
+                        chapter.classList.add('chapter-hidden');
+                    }
+                });
+            });
+
+            // --- Chart Initialization ---
+            // (Profit Rate Chart - Slide 13)
+            const prcCtx = document.getElementById('profitRateChart');
+            if (prcCtx) {
+                new Chart(prcCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1965', '1970', '1975', '1980', '1985', '1990', '1995', '2000'],
+                        datasets: [{
+                            label: 'Peļņas norma ASV (%)', data: [22, 20, 15, 17, 20, 18, 21, 23],
+                            borderColor: 'rgb(47, 128, 237)', tension: 0.1, fill: false
+                        }, {
+                            label: 'Peļņas norma Eiropā (%)', data: [20, 18, 12, 14, 18, 16, 19, 20],
+                            borderColor: 'rgb(86, 204, 242)', tension: 0.1, borderDash: [5, 5], fill: false
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: { beginAtZero: false, suggestedMax: 25, title: { display: true, text: 'Peļņas norma (%)'} } } }
+                });
+            }
+
+            // (Dividend Payout Chart - Slide 14)
+            const dpcCtx = document.getElementById('dividendPayoutChart');
+            if (dpcCtx) {
+                new Chart(dpcCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1965', '1970', '1975', '1980', '1985', '1990', '1995', '2000'],
+                        datasets: [{
+                            label: 'Dividendes ASV (% no peļņas)', data: [30, 35, 25, 30, 40, 45, 50, 55],
+                            borderColor: 'rgb(47, 128, 237)', tension: 0.1, fill: false
+                        }, {
+                            label: 'Dividendes Francijā (% no peļņas)', data: [20, 22, 18, 25, 30, 38, 42, 48],
+                            borderColor: 'rgb(86, 204, 242)', tension: 0.1, borderDash: [5, 5], fill: false
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: { beginAtZero: true, suggestedMax: 80, title: {display: true, text: 'Izmaksātā peļņas daļa (%)'} } } }
+                });
+            }
+            
+            // (US Tariff Rates Chart - Slide 32)
+            const usTariffRatesCtx = document.getElementById('usTariffRatesChart');
+            if (usTariffRatesCtx) {
+                 new Chart(usTariffRatesCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1900', '1910', '1920', '1930', '1934', '1940', '1950', '1960', '1970', '1980', '1990'],
+                        datasets: [{
+                            label: 'ASV vidējā tarifu likme (%)',
+                            data: [48, 42, 25, 59, 47, 38, 14, 12, 10, 7, 5], 
+                            borderColor: 'rgb(47, 128, 237)', tension: 0.2, fill: false
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: { beginAtZero: true, suggestedMax: 60, title: {display: true, text: 'Vidējā tarifu likme (%)'} } }, plugins: { title: { display: true, text: 'ASV Vidējās Tarifu Likmes (Ilustratīvs)'} } }
+                });
+            }
+
+            // (Trade Growth Chart - Slide 57)
+            const tradeGrowthCtx = document.getElementById('tradeGrowthChart');
+            if (tradeGrowthCtx) {
+                new Chart(tradeGrowthCtx, {
+                    type: 'bar', 
+                    data: {
+                        labels: ['2000', '2003', '2006', '2009', '2012', '2015', '2018'],
+                        datasets: [
+                            { label: 'IKP pieaugums (%)', data: [4.1, 2.8, 3.9, -0.1, 2.2, 2.7, 2.9], backgroundColor: 'rgba(47, 128, 237, 0.7)', yAxisID: 'yPercentChange' },
+                            { label: 'Tirdzniecības pieaugums (%)', data: [12.5, 5.0, 8.5, -10.5, 3.0, 0.5, 3.8], backgroundColor: 'rgba(86, 204, 242, 0.7)', yAxisID: 'yPercentChange'},
+                            { label: 'Tirdzniecība pret globālo izlaidi (%)', data: [45, 50, 58, 52, 60, 58, 60], borderColor: 'rgb(255, 159, 64)', type: 'line', tension: 0.1, yAxisID: 'yTradeOutputRatio', fill: false }
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { yPercentChange: { type: 'linear', display: true, position: 'left', beginAtZero: true, title: { display: true, text: 'Procentuālās izmaiņas (%)'} }, yTradeOutputRatio: { type: 'linear', display: true, position: 'right', beginAtZero: false, suggestedMin: 30, suggestedMax: 70, title: { display: true, text: 'Tirdz. pret glob. izlaidi (%)'}, grid: { drawOnChartArea: false } } }, plugins: { title: { display: true, text: 'Ekonomiskā Izaugsme un Tirdzniecība (Ilustratīvs)' } } }
+                });
+            }
+            
+            // (US Tariff Changes Chart - Slide 58)
+            const usTariffChangesCtx = document.getElementById('usTariffChangesChart');
+            if (usTariffChangesCtx) {
+                new Chart(usTariffChangesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Brazīlija', 'Indija', 'Koreja', 'Ķīna', 'Krievija', 'Turcija', 'Japāna', 'ES', 'ASV', 'Kanāda'],
+                        datasets: [{
+                            label: 'Vidējā piemērotā tarifa likme (%) 2017', data: [13, 10, 8, 9.5, 7, 10, 3, 4, 3.5, 4], 
+                            backgroundColor: ['rgba(255, 99, 132, 0.7)','rgba(54, 162, 235, 0.7)','rgba(255, 206, 86, 0.7)','rgba(75, 192, 192, 0.7)','rgba(153, 102, 255, 0.7)','rgba(255, 159, 64, 0.7)','rgba(99, 255, 132, 0.7)','rgba(162, 54, 235, 0.7)','rgba(206, 255, 86, 0.7)','rgba(192, 75, 192, 0.7)']
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, indexAxis: 'x', scales: { y: { beginAtZero: true, title: {display: true, text: 'Tarifu likme (%)'} } }, plugins: { title: { display: true, text: 'ASV Tarifu Salīdzinājums (Ilustratīvs, ~2017)'} } }
+                });
+            }
+
+            // (COVID Impact on GDP Chart - based on slide 88/89)
+            const covidImpactCtx = document.getElementById('covidImpactGDPChart');
+            if (covidImpactCtx) {
+                new Chart(covidImpactCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['IKP Kopā', 'Pārtika', 'Izglītība', 'Brīvdienas/Tūrisms'],
+                        datasets: [
+                            { label: 'Ķīna (%)', data: [2.35, 2.26, 1.25, -22.35], backgroundColor: 'rgba(255, 99, 132, 0.7)'},
+                            { label: 'Japāna (%)', data: [-4.86, 1.30, -4.96, -32.76], backgroundColor: 'rgba(54, 162, 235, 0.7)'},
+                            { label: 'Dienvidkoreja (%)', data: [-0.91, 2.25, -5.30, -18.12], backgroundColor: 'rgba(75, 192, 192, 0.7)'}
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: { title: {display: true, text: 'Izmaiņas pret iepriekšējo gadu (%)'} } }, plugins: { title: { display: true, text: 'COVID-19 Ietekme uz IKP pa Nozarem (Ilustratīvs, 2020 vs 2019)'} } }
+                });
+            }
+
+            // (FDI as % of GWP - Slide 112)
+            const fdiGwpCtx = document.getElementById('fdiPercentageGWPChart');
+            if (fdiGwpCtx) {
+                new Chart(fdiGwpCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1970', '1975', '1980', '1985', '1990', '1995', '2000'], // Simplified
+                        datasets: [{
+                            label: 'FDI kā % no Pasaules Kopprodukta',
+                            data: [0.5, 0.6, 0.7, 0.8, 1.0, 1.5, 3.5], // ILLUSTRATIVE, showing upward trend
+                            borderColor: 'rgb(75, 192, 192)', fill: false, tension: 0.1
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: {beginAtZero: true, title: {display: true, text: '%'}} }, plugins: { title: {display: true, text: 'TĀI kā % no PKP (Ilustratīvs)'} } }
+                });
+            }
+
+            // (Net Resource Flows to Developing Countries - Slide 113)
+            const netFlowsCtx = document.getElementById('netResourceFlowsDevCountriesChart');
+            if (netFlowsCtx) {
+                 new Chart(netFlowsCtx, {
+                    type: 'bar', // Original is stacked area, bar can illustrate components
+                    data: {
+                        labels: ['1988', '1990', '1992', '1994', '1996'], // Simplified
+                        datasets: [
+                            { label: 'Privātās plūsmas (mljrd. $)', data: [20, 30, 50, 150, 250], backgroundColor: 'rgba(255, 99, 132, 0.7)'},
+                            { label: 'Oficiālā attīstības palīdzība (mljrd. $)', data: [50, 55, 60, 58, 55], backgroundColor: 'rgba(54, 162, 235, 0.7)'},
+                            { label: 'Eksporta kredīti (mljrd. $)', data: [10, 8, 5, 12, 15], backgroundColor: 'rgba(255, 206, 86, 0.7)'}
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, 
+                               scales: { x: {stacked: true}, y: {stacked: true, title: {display:true, text:'mljrd. USD'}} }, 
+                               plugins: { title: {display: true, text:'Neto Resursu Plūsmas uz Attīstības Valstīm (Ilustratīvs)'} } }
+                });
+            }
+            
+            // (FDI Inflows by Region - Slide 115)
+            const fdiRegionCtx = document.getElementById('fdiInflowsByRegionChart');
+            if(fdiRegionCtx) {
+                new Chart(fdiRegionCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['1995', '1998', '2000', '2003', '2006'], // Simplified
+                        datasets: [
+                            { label: 'Attīstītās valstis (mljrd. $)', data: [200, 480, 1100, 400, 800], backgroundColor: 'rgba(255, 159, 64, 0.7)' },
+                            { label: 'Attīstības valstis (mljrd. $)', data: [100, 180, 250, 280, 380], backgroundColor: 'rgba(75, 192, 192, 0.7)' }
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, 
+                               scales: { y: {title: {display:true, text:'mljrd. USD'}} }, 
+                               plugins: { title: {display: true, text:'FDI Ienākošā Plūsma pa Reģioniem (Ilustratīvs)'} } }
+                });
+            }
+
+
+        });
+    </script>
+
+</body>
 </html>
